@@ -69,6 +69,7 @@ function renderAnswers() {
 
 // 30 second timer 
 function qClock() {
+	timeClock = 30;
 	myTimer = setInterval(decrement, 1000)
 
 	function decrement() {
@@ -81,7 +82,6 @@ function qClock() {
 	        console.log("Time Up!");
 			wrongAnswers++;
 			answers = [];
-			stop();
 			removeQ();
 			timesUp();
 			// I think I'm going to need nested objects.
@@ -97,6 +97,7 @@ function qClock() {
 // stops and clears the timer
 function stop() {
   clearInterval(myTimer);
+  timeClock = 30;
 }
 
 // registers click and compares to right answers, increases correct/wrong answers, 

@@ -4,7 +4,7 @@ body {
 	background-attachment: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-color: azure;
+	background-color: #b491e8;
 }
 
 header {
@@ -14,8 +14,15 @@ header {
 	height: 100px;
 }
 
+#ongo {
+	background-color: #ededee;
+}
+
+#ongo:hover {
+	background-color: #7b2bb6;
+}
+
 #container {
-	background-color: azure;
 	margin: 0 15% -80px 15%;
 	height: 100%;
 }
@@ -24,7 +31,6 @@ header {
 	text-align: center;
 	font-size: 20px;
 	color: #444;
-
 }
 
 .hidden {
