@@ -4,7 +4,7 @@ body {
 	background-attachment: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-color: #b491e8;
+	background-color: #c2f9ff;
 }
 
 header {
@@ -15,7 +15,7 @@ header {
 }
 
 #ongo {
-	background-color: #ededee;
+	background-color: #f86dfd;
 }
 
 #ongo:hover {
