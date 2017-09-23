@@ -1,0 +1,42 @@
+body {
+/*	background-image: url(../images/lumpyspace.jpg);
+*/	background-position: relative;
+	background-attachment: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: azure;
+}
+
+header {
+	background-color: rgba(23, 160, 178, 0.5);
+	color: #fff;
+	text-align: center;
+	height: 100px;
+}
+
+#container {
+	background-color: azure;
+	margin: 0 15% -80px 15%;
+	height: 100%;
+}
+
+#trivia {
+	text-align: center;
+	font-size: 20px;
+	color: #444;
+
+}
+
+.hidden {
+	background-color: transparent;
+	color: transparent;
+}
+
+.hoverThing:hover {
+	background-color: #b0b0b0;
+}
+
+/*#foot {
+	background-color: #fff;
+	height: 80px;
+}*/
