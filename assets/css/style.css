@@ -1,6 +1,6 @@
 body {
-/*	background-image: url(../images/lumpyspace.jpg);
-*/	background-position: relative;
+	background-image: url(../images/spac-bg.png);
+	background-position: relative;
 	background-attachment: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -23,8 +23,10 @@ header {
 }
 
 #container {
-	margin: 0 15% -80px 15%;
-	height: 100%;
+	margin: 30px 15% -80px 15%;
+	height: 700px;
+	background-color: magenta;
+	padding: 30px;
 }
 
 #trivia {

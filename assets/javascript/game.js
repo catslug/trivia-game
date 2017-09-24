@@ -1,83 +1,59 @@
 // NEED TO TELL IT WHAT TO DO WHEN YOU GET TO THE LAST QUESTION.
+ 
 var qs = {
   hereMyQuestions: [{
     question: "This gentle alien race looks a little like cthulu but carries a glowing sphere which functions as a speaking device:",
     yesAnswer: "The Ood",
     noAnswer: ["Weeping Angels", "Adipose", "Cybermen"],
-    ansImg: "https://media.giphy.com/media/WE5hRLWRWalwY/giphy.gif",
+    imgAnswer: "https://media.giphy.com/media/WE5hRLWRWalwY/giphy.gif",
   }, { 
     question: "He just wants to go home. Can’t he just borrow your phone?",
     yesAnswer: "E.T.",
     noAnswer: ["Alf", "Answer No", "Answer No Too"],
-    ansImg: "https://media.giphy.com/media/gHcPh3ehbRGik/giphy.gif",
+    imgAnswer: "https://media.giphy.com/media/gHcPh3ehbRGik/giphy.gif",
   }, {
     question: "She’s no longer the heir to the throne. In search of herself, she runs off to live among wolves in the woods of Ooo, was subsequently banished, and proceeded to terrorize a local village in order to eat their crops. This princess is:",
     yesAnswer: "Lumpy Space Princess",
     noAnswer: ["Flame Princess", "Princess Bubblegum", "Princess Leia"],
-    ansImg: "https://media.giphy.com/media/3eT5kJmvLl8TC/giphy.gif",
-  }, {
-  	question: "A parody mirror character to Star Wars’ giant-eyed, worm-like villain, this character is known as:",
-  	yesAnser: "Pizza the Hut",
-  	noAnswer: ["Jabberwocky", "Bubble Tea Fet", "blah"]
-  	ansImg: "https://media.giphy.com/media/e9naBh3ziasN2/giphy.gif"
+    imgAnswer: "https://media.giphy.com/media/3eT5kJmvLl8TC/giphy.gif",
   }, {
   	question: "The universe’s twisted pest control, this vicious species wears a tough mechanical exterior over their delicate inner bodies and approach all enemies while chanting “exterminate”.",
-  	yesAnser: "Daleks",
-  	noAnswer: ["Sontaran", "Slitheen", "Time Lords"]
-  	ansImg: 
+  	yesAnswer: "Daleks",
+  	noAnswer: ["Sontaran", "Slitheen", "Time Lords"],
+  	imgAnswer: "https://media2.giphy.com/media/MAZ7tPKwCnrsA/giphy.gif",
   }, {
-  	question: "Blah Blah",
-  	yesAnser: "Blah",
-  	noAnswer: []
-  	ansImg: 
+  	question: "Most notably represented by a much beloved character who is known for wishing fellow travelers to “live long and prosper”, this hyper-logical alien race is known as:",
+  	yesAnswer: "Vulcans",
+  	noAnswer: ["Klingon", "Human", "Blah"],
+  	imgAnswer: "https://media2.giphy.com/media/n8SkNR77udWlG/giphy.gif",
   }, {
-  	question: "Blah Blah",
-  	yesAnser: "Blah",
-  	noAnswer: []
-  	ansImg: 
+  	question: "A parody mirror character to Star Wars’ giant-eyed, worm-like villain, this character is known as:",
+  	yesAnswer: "Pizza the Hut",
+  	noAnswer: ["Jabberwocky", "Bubble Tea Fet", "blah"],
+    imgAnswer: "https://media2.giphy.com/media/e9naBh3ziasN2/giphy.gif",
   }, {
-  	question: "Blah Blah",
-  	yesAnser: "Blah",
-  	noAnswer: []
-  	ansImg: 
+  	question: "This alien race calls its origin planet “Homeworld” and has a unique ability to fuse and un-fuse with other members of its race, thus creating entirely new and more powerful entities. Some members of this race were born in areas that are known as “Kindergartens”. ",
+  	yesAnswer: "Crystal Gems",
+  	noAnswer: ["Corruptions", "Cyborgs", "Geodeans"],
+    imgAnswer: "http://i.imgur.com/7iNzUEY.gif",
   }, {
-  	question: "Blah Blah",
-  	yesAnser: "Blah",
-  	noAnswer: []
-  	ansImg: 
+  	question: "This alien race exiled its criminals to a dimensional plane known as the Phantom Zone. They're known as:",
+  	yesAnswer: "Kryptonians",
+  	noAnswer: ["Kroloteans", "Obsidian Folk", "Qwardians"],
+    imgAnswer: "https://i.pinimg.com/originals/9a/e2/da/9ae2da473215e472618074c3194c358b.gif",
   }, {
-  	question: "Blah Blah",
-  	yesAnser: "Blah",
-  	noAnswer: []
-  	ansImg: 
+  	question: "Not exactly verbal, but Han gets him.",
+  	yesAnswer: "Chewbacca",
+  	noAnswer: ["R2D2", "BB8", "C3PO"],
+    imgAnswer: "https://i.pinimg.com/originals/9a/e2/da/9ae2da473215e472618074c3194c358b.gif",
   }, {
-  	question: "Blah Blah",
-  	yesAnser: "Blah",
-  	noAnswer: []
-  	ansImg: 
-  }, {
-  	question: "Blah Blah",
-  	yesAnser: "Blah",
-  	noAnswer: []
-  	ansImg: 
-  }, {
-  	question: "Blah Blah",
-  	yesAnser: "Blah",
-  	noAnswer: []
-  	ansImg: 
-  }, {
-  	question: "Blah Blah",
-  	yesAnser: "Blah",
-  	noAnswer: []
-  	ansImg: 
-  }, {
-  	question: "Blah Blah",
-  	yesAnser: "Blah",
-  	noAnswer: []
-  	ansImg: 
+  	question: "",
+  	yesAnswer: "",
+  	noAnswer: ["Blah", "blah 2", "blah 3"],
+    imgAnswer: "https://i.pinimg.com/originals/9a/e2/da/9ae2da473215e472618074c3194c358b.gif",
   }]
 }
-var timeClock = 30
+var timeClock = 15
 var answers = []
 var correctAnswers = 0
 var wrongAnswers = 0
@@ -87,18 +63,11 @@ var currentQ = 0
 // start button activation
 $(document).ready(function startButton() {
 	 $("#ongo").on("click", function() {
-	 	// writes the clock to the page
-	 	$("#timer").text("Seconds left: " + timeClock);
-	 	qClock();
 	 	
 	 	// hides the button
 	 	$("#ongo").addClass("hidden");
 
-	 	// writes the question to the page 
-	 	$("#question").text(qs.hereMyQuestions[currentQ].question);
-
-		answerArray();
-		renderAnswers();
+	 	start();
 	 })
 })
 
@@ -109,6 +78,7 @@ function start() {
 	 	$("#question").text(qs.hereMyQuestions[currentQ].question);
 		answerArray();
 		renderAnswers();
+		console.log("4, start function");
 }
 
 // creates array of answers
@@ -117,8 +87,11 @@ function answerArray() {
 	answers.push(qs.hereMyQuestions[currentQ].yesAnswer);
  	for (var i = 0; i < 3; i++) {
  		answers.push(qs.hereMyQuestions[currentQ].noAnswer[i]);
+ 		console.log(answers);
  	}
-
+ 	console.log(answers);
+ 	console.log(currentQ);
+ 	
  	// sorts the new array of answers
  	answers.sort(function sort() { 
 		return (Math.round(Math.random()) - 0.5);
@@ -135,32 +108,33 @@ function renderAnswers() {
 
 // 30 second timer 
 function qClock() {
-	timeClock = 30;
+	timeClock = 15;
 	myTimer = setInterval(decrement, 1000)
 
 	function decrement() {
-		timeClock--;
-		console.log(timeClock)
-		$("#timer").text("Seconds left: " + timeClock);
+      	if (timeClock > 0) {
+			timeClock--;
+			console.log(timeClock)
+			$("#timer").text("Seconds left: " + timeClock);
+		} 
 
-      	if (timeClock === 0) {
+		else {
+	        removeQ();
+	        answers = [];
 	        stop();
-	        console.log("Time Up!");
-			wrongAnswers++;
-			answers = [];
-			removeQ();
+	        console.log("Line 26 Time Up!", timeClock);
+			console.log(answers);
 			timesUp();
-			// I think I'm going to need nested objects.
 			currentQ++;
-			start();
       	}
     }
 }
 
 // stops and clears the timer, resets value
 function stop() {
-  clearInterval(myTimer);
-  timeClock = 30;
+  	clearInterval(myTimer);
+  	timeClock = 15;
+  	console.log("1, stop function")
 }
 
 // registers click and compares to right answers, increases correct/wrong answers, 
@@ -195,6 +169,7 @@ function removeQ() {
 	$("#question").empty();
 	$("#answers").empty();
 	$("#timer").empty();
+	console.log("2, removeQ")
 }
 
 // displays this text for 3 seconds if correct answer
@@ -202,7 +177,7 @@ function resultYes() {
 	myTimer = setTimeout(yesDelete, 3000);
 
 	$("#question").text("That's right!  It's " + qs.hereMyQuestions[currentQ].yesAnswer + ".");
-	$("<img src='" + qs.hereMyQuestions[currentQ].ansImg + "'' />").appendTo("#img-result");
+	$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").appendTo("#img-result");
 }
 
 // displays this text for 3 seconds if wrong answer
@@ -210,7 +185,7 @@ function resultNo() {
 	myTimer = setTimeout(yesDelete, 3000);
 
 	$("#question").text("Nope!  It's " + qs.hereMyQuestions[currentQ].yesAnswer + ".");
-	$("<img src='" + qs.hereMyQuestions[currentQ].ansImg + "'' />").appendTo("#img-result");
+	$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").appendTo("#img-result");
 }
 
 // displays this text for 3 seconds if time runs out
@@ -218,8 +193,10 @@ function timesUp() {
 	myTimer = setTimeout(yesDelete, 3000);
 
 	$("#question").text("Time's Up!  The correct answer is: " + qs.hereMyQuestions[currentQ].yesAnswer + ".");
-	$("<img src='" + qs.hereMyQuestions[currentQ].ansImg + "'' />").appendTo("#img-result");
+	$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").appendTo("#img-result");
+	console.log("3, time's up function");
 }
+
 // deletes result information from the DOM
 function yesDelete() {
 	$("#question").empty();
