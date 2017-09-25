@@ -49,7 +49,7 @@ var qs = {
   }, {
   	question: "Which of the following intermittent space travelers is not characterized by a green-tinged pallor?",
   	yesAnswer: "Green Lantern",
-  	noAnswer: ["Nebula", "Marvin Martian", "Hulk"],
+  	noAnswer: ["Gamora", "Marvin Martian", "Hulk"],
     imgAnswer: "http://cdn1.clevver.com/wp-content/uploads/2013/10/superhero-movie-gifs-green-lantern-independentmasterlist..gif",
   }, {
   	question: "Which of the following first appeared on screen?",
