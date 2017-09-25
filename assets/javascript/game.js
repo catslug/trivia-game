@@ -35,25 +35,30 @@ var qs = {
   	question: "This alien race calls its origin planet “Homeworld” and has a unique ability to fuse and un-fuse with other members of its race, thus creating entirely new and more powerful entities. Some members of this race were born in areas that are known as “Kindergartens”. ",
   	yesAnswer: "Crystal Gems",
   	noAnswer: ["Corruptions", "Cyborgs", "Geodeans"],
-    imgAnswer: "http://i.imgur.com/7iNzUEY.gif",
+    imgAnswer: "https://vignette3.wikia.nocookie.net/steven-universe/images/7/73/Log_Date_Animation_Steven_hug_from_behind_Peridot.gif/revision/latest?cb=20160114045348",
   }, {
   	question: "This alien race exiled its criminals to a dimensional plane known as the Phantom Zone. They're known as:",
   	yesAnswer: "Kryptonians",
   	noAnswer: ["Kroloteans", "Obsidian Folk", "Qwardians"],
     imgAnswer: "https://i.pinimg.com/originals/9a/e2/da/9ae2da473215e472618074c3194c358b.gif",
   }, {
-  	question: "Not exactly verbal, but Han gets him.",
+  	question: "Fiercely loyal companion. Probably wanted by authorities on a dozen planets. May or may not know a thing or two about smuggling. Not exactly verbal, but an ace with a gun. ",
   	yesAnswer: "Chewbacca",
-  	noAnswer: ["R2D2", "BB8", "C3PO"],
-    imgAnswer: "https://i.pinimg.com/originals/9a/e2/da/9ae2da473215e472618074c3194c358b.gif",
+  	noAnswer: ["BB8", "Ewok", "Wookie"],
+    imgAnswer: "https://media.giphy.com/media/lqrJPaWIsjTZS/giphy.gif",
   }, {
-  	question: "",
-  	yesAnswer: "",
-  	noAnswer: ["Blah", "blah 2", "blah 3"],
-    imgAnswer: "https://i.pinimg.com/originals/9a/e2/da/9ae2da473215e472618074c3194c358b.gif",
+  	question: "Which of the following intermittent space travelers is not characterized by a green-tinged pallor?",
+  	yesAnswer: "Green Lantern",
+  	noAnswer: ["Nebula", "Marvin Martian", "Hulk"],
+    imgAnswer: "http://cdn1.clevver.com/wp-content/uploads/2013/10/superhero-movie-gifs-green-lantern-independentmasterlist..gif",
+  }, {
+  	question: "Which of the following first appeared on screen?",
+  	yesAnswer: "Oldest",
+  	noAnswer: ["Next Oldest", "Next Next Oldest", "Least Oldest"],
+    imgAnswer: "http://cdn1.clevver.com/wp-content/uploads/2013/10/superhero-movie-gifs-green-lantern-independentmasterlist..gif",
   }]
 }
-var timeClock = 15
+var timeClock = 20
 var answers = []
 var correctAnswers = 0
 var wrongAnswers = 0
@@ -73,7 +78,7 @@ $(document).ready(function startButton() {
 
 function start() {
 		// writes the question to the page 
-		$("#timer").text("Seconds left: " + timeClock);
+		$("#timer").text("Seconds left: " + timeClock).addClass("timerStyle");
 	 	qClock();
 	 	$("#question").text(qs.hereMyQuestions[currentQ].question);
 		answerArray();
@@ -125,7 +130,7 @@ function qClock() {
 	        console.log("Line 26 Time Up!", timeClock);
 			console.log(answers);
 			timesUp();
-			currentQ++;
+			atTheEndYet(); // currentQ++;
       	}
     }
 }
@@ -134,7 +139,6 @@ function qClock() {
 function stop() {
   	clearInterval(myTimer);
   	timeClock = 15;
-  	console.log("1, stop function")
 }
 
 // registers click and compares to right answers, increases correct/wrong answers, 
@@ -150,7 +154,7 @@ $(document).on("click", ".hoverThing", function() {
 		stop();
 		removeQ();
 		resultYes();
-		currentQ++;	
+		atTheEndYet(); // currentQ++;	
 	}
 
 	else {
@@ -160,7 +164,7 @@ $(document).on("click", ".hoverThing", function() {
 		stop();
 		removeQ();
 		resultNo();
-		currentQ++; 
+		atTheEndYet(); // currentQ++; 
 	}
 });
 
@@ -168,8 +172,7 @@ $(document).on("click", ".hoverThing", function() {
 function removeQ() {
 	$("#question").empty();
 	$("#answers").empty();
-	$("#timer").empty();
-	console.log("2, removeQ")
+	$("#timer").removeClass("timerStyle").empty();
 }
 
 // displays this text for 3 seconds if correct answer
@@ -203,6 +206,17 @@ function yesDelete() {
 	$("#img-result").empty();
 	clearTimeout(myTimer);
 	start();
+}
+
+function atTheEndYet() {
+	if (currentQ <= 10) {
+		currentQ++;
+	}
+	else {
+		// write more code here...but not tonight. may need to nest some other functions here
+		// and then just call this up in the doc above rather than doing elsewise here
+		lastPage();
+	}
 }
 
 // displays the tally of correct and wrong answers on the final screen 

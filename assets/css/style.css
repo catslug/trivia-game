@@ -1,38 +1,73 @@
 body {
-	background-image: url(../images/spac-bg.png);
+	background-image: url(../images/greyship.jpg);
 	background-position: relative;
 	background-attachment: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-color: #c2f9ff;
+	background-repeat: repeat;
+/*	background-size: cover;
+*/	background-color: #c2f9ff;
+	font-family: 'Cutive Mono', monospace;
+	font-size: 22px;
+	line-height: 150%;
 }
 
 header {
-	background-color: rgba(23, 160, 178, 0.5);
+	background-color: #d608ff;
 	color: #fff;
 	text-align: center;
 	height: 100px;
 }
 
+p#head {
+	font-size: 34px;
+	letter-spacing: 3px;
+	font-family: 'Monoton', cursive;
+	padding-top: 10px;
+}
+
+p#under {
+	font-size: 22px;
+	font-family: 'Cutive Mono', monospace;
+}
+
 #ongo {
-	background-color: #f86dfd;
+	background-color: #1bcc92;
+	margin: 180px;
+	font-size: 22px;
+	padding: 10px;
+	letter-spacing: 1px;
 }
 
 #ongo:hover {
 	background-color: #7b2bb6;
+	transition: all 1s;
 }
 
-#container {
+#content, #container {
+	height: 100%;
 	margin: 30px 15% -80px 15%;
-	height: 700px;
-	background-color: magenta;
+}
+
+#content-box {
+	background-color: #ffC01b;
 	padding: 30px;
+	height: 600px;
+	margin: 30px 15% 30px 15%;
+	border-radius: 4px;
+	box-shadow: 0 0 8px 3px #b0b0b0;
+}
+
+#content-box::after {
+	content: "";
+	content: none;
+	display: block;
+	clear: both; 
 }
 
 #trivia {
 	text-align: center;
 	font-size: 20px;
 	color: #444;
+	height: 100%;
 }
 
 .hidden {
@@ -41,10 +76,33 @@ header {
 }
 
 .hoverThing:hover {
-	background-color: #b0b0b0;
+	background-color: #0EB27D;
+	padding: 10px;
 }
 
-/*#foot {
-	background-color: #fff;
+hr {
+	background-color: #0EB27D;
+}
+
+p#answers {
+	padding: 10px;
+}
+
+p.timerStyle {
+	background-color: #1bcc92;
+	padding: 13px;
+	margin: 10px 15% 25px 15%;
+}
+
+#foot:before {
+	content: "";
+	content: none;
+	display: block;
+	clear: both; 
+}
+
+#foot {
+	background-color: #9817b2;
 	height: 80px;
-}*/
+	margin-top: 10%;
+}
