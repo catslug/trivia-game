@@ -1,21 +1,21 @@
 body, html {
-	height: 100%;
+	min-height: 100%;
+	margin-bottom: 0;
 }
 
 body {
-/*	background-image: url(../images/greyship.jpg);
+	background-image: url(../images/pinkdots.png);
 	background-position: relative;
 	background-attachment: center;
-	background-repeat: repeat;*/
-/*	background-size: cover;
-*/	background-color: #c2f9ff;
+	background-repeat: repeat;
+	background-color: #c2f9ff;
 	font-family: 'Cutive Mono', monospace;
 	font-size: 22px;
 	line-height: 150%;
 }
 
 header {
-	background-color: #d608ff;
+	background-color: #c100e2;
 	color: #fff;
 	text-align: center;
 	height: 100px;
@@ -35,10 +35,13 @@ p#under {
 
 #ongo {
 	background-color: #1bcc92;
-	margin: 180px;
+	margin: 25% 20% 25% 20%;
 	font-size: 22px;
 	padding: 10px;
 	letter-spacing: 1px;
+	width: 60%;
+	white-space: normal;
+	word-wrap: break-word;
 }
 
 #ongo:hover {
@@ -49,7 +52,7 @@ p#under {
 #content, #container {
 	min-height: 100%;
 	min-width: 100%;
-	margin: 30px auto -80px auto;
+	margin: 30px auto -50px auto;
 	clear: both;
 }
 
@@ -62,16 +65,16 @@ p#under {
 
 #content-box {
 	background-color: #ffC01b;
-	padding: 30px;
+	padding: 40px;
 	height: 100%;
 	width: 70%;
-	margin: 30px 15%;
+	margin: 40px 15%;
 	border-radius: 4px;
 	box-shadow: 0 0 8px 3px #b0b0b0;
 	text-align: center;
 	font-size: 20px;
 	color: #444;
-	position: absolute;
+	overflow: auto;
 }
 
 #content-box::after {
@@ -80,13 +83,6 @@ p#under {
 	display: block;
 	clear: both; 
 }
-
-/*#trivia {
-	text-align: center;
-	font-size: 20px;
-	color: #444;
-	position: relative;
-}*/
 
 .hidden {
 	background-color: transparent;
@@ -98,18 +94,32 @@ p#under {
 	padding: 10px;
 }
 
-hr {
-	background-color: #0EB27D;
+p.answersP {
+	padding: 10px;
 }
 
-p#answers {
-	padding: 10px;
+p.questionP {
+	margin-bottom: 30px;
+}
+
+hr {
+	border-color: #0EB27D;
 }
 
 p.timerStyle {
 	background-color: #1bcc92;
 	padding: 13px;
-	margin: 10px 15% 25px 15%;
+	margin: 10px 15% 30px 15%;
+}
+
+p#copyright {
+	margin-bottom: 0;
+}
+
+.imgStyle {
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 footer#foot::before {
@@ -121,7 +131,11 @@ footer#foot::before {
 
 footer#foot {
 	background-color: #9817b2;
-	height: 80px;
-	margin-top: 10%;
-	position: relative;
+	height: 70px;
+	margin-top: 15%;
+	text-align: center;
+	color: #e7e7e8;
+	font-size: 16px;
+	padding: 18px;
+	letter-spacing: 2px;
 }

@@ -1,5 +1,3 @@
-// NEED TO TELL IT WHAT TO DO WHEN YOU GET TO THE LAST QUESTION.
- 
 var qs = {
   hereMyQuestions: [{
     question: "This gentle alien race looks a little like cthulu but carries a glowing sphere which functions as a speaking device:",
@@ -9,7 +7,7 @@ var qs = {
   }, { 
     question: "He just wants to go home. Can’t he just borrow your phone?",
     yesAnswer: "E.T.",
-    noAnswer: ["Alf", "Answer No", "Answer No Too"],
+    noAnswer: ["Alf", "Superman", "The Thing"],
     imgAnswer: "https://media.giphy.com/media/gHcPh3ehbRGik/giphy.gif",
   }, {
     question: "She’s no longer the heir to the throne. In search of herself, she runs off to live among wolves in the woods of Ooo, was subsequently banished, and proceeded to terrorize a local village in order to eat their crops. This princess is:",
@@ -29,12 +27,12 @@ var qs = {
   }, {
   	question: "Most notably represented by a much beloved character who is known for wishing fellow travelers to “live long and prosper”, this hyper-logical alien race is known as:",
   	yesAnswer: "Vulcans",
-  	noAnswer: ["Klingon", "Human", "Blah"],
+  	noAnswer: ["Klingon", "Humans", "Romulans"],
   	imgAnswer: "https://media2.giphy.com/media/n8SkNR77udWlG/giphy.gif",
   }, {
   	question: "A parody mirror character to Star Wars’ giant-eyed, worm-like villain, this character is known as:",
   	yesAnswer: "Pizza the Hut",
-  	noAnswer: ["Jabberwocky", "Bubble Tea Fet", "blah"],
+  	noAnswer: ["Jabberwocky", "Bubble Tea Fet", "Habba the Jutt"],
     imgAnswer: "https://media2.giphy.com/media/e9naBh3ziasN2/giphy.gif",
   }, {
   	question: "This alien race calls its origin planet “Homeworld” and has a unique ability to fuse and un-fuse with other members of its race, thus creating entirely new and more powerful entities. Some members of this race were born in areas that are known as “Kindergartens”. ",
@@ -52,15 +50,20 @@ var qs = {
   	noAnswer: ["BB8", "Ewok", "Wookie"],
     imgAnswer: "https://media.giphy.com/media/lqrJPaWIsjTZS/giphy.gif",
   }, {
-  	question: "Which of the following intermittent space travelers is not characterized by a green-tinged pallor?",
+  	question: "Which of the following space travelers is not characterized by green-tinged skin?",
   	yesAnswer: "Green Lantern",
-  	noAnswer: ["Gamora", "Marvin Martian", "Hulk"],
+  	noAnswer: ["Gamora", "Raxacoricofallapatorian", "Hulk"],
     imgAnswer: "http://cdn1.clevver.com/wp-content/uploads/2013/10/superhero-movie-gifs-green-lantern-independentmasterlist..gif",
   }, {
-  	question: "Which of the following first appeared on screen?",
-  	yesAnswer: "Oldest",
-  	noAnswer: ["Next Oldest", "Next Next Oldest", "Least Oldest"],
-    imgAnswer: "http://cdn1.clevver.com/wp-content/uploads/2013/10/superhero-movie-gifs-green-lantern-independentmasterlist..gif",
+  	question: "Which spaceship's crew was comprised entirely of humans?",
+  	yesAnswer: "Serenity",
+  	noAnswer: ["Starship Enterprise", "Millenium Falcon", "Milano"],
+    imgAnswer: "https://media.tenor.com/images/302e7639700f41679ee8745333d6ca8d/tenor.gif",
+  }, {
+  	question: "Which alien race has the strongest average life span?",
+  	yesAnswer: "Time Lords",
+  	noAnswer: ["Romulans", "Wookies", "Vulcans"],
+  	imgAnswer: "http://readeroffictions.com/wp-content/uploads/2015/07/gif-old-doctor-who.gif",
   }]
 }
 var timeClock = 20
@@ -69,15 +72,14 @@ var correctAnswers = 0
 var wrongAnswers = 0
 var myTimer
 var currentQ = 0
-var isAtTheEnd = false;
+var isCorrect = false
 
 // start button activation
 $(document).ready(function startButton() {
 	 $("#ongo").on("click", function() {
-	 	
 	 	// hides the button
 	 	$("#ongo").addClass("hidden");
-
+	 	removeQ();
 	 	start();
 	 })
 })
@@ -86,7 +88,7 @@ function start() {
 	// writes the question to the page 
 	$("#timer").text("Seconds left: " + timeClock).addClass("timerStyle");
  	qClock();
- 	$("#question").text(qs.hereMyQuestions[currentQ].question);
+ 	$("#question").addClass("questionP").text(qs.hereMyQuestions[currentQ].question);
 	answerArray();
 	renderAnswers();
 }
@@ -97,10 +99,7 @@ function answerArray() {
 	answers.push(qs.hereMyQuestions[currentQ].yesAnswer);
  	for (var i = 0; i < 3; i++) {
  		answers.push(qs.hereMyQuestions[currentQ].noAnswer[i]);
- 		console.log(answers);
  	}
- 	console.log(answers);
- 	console.log(currentQ);
  	
  	// sorts the new array of answers
  	answers.sort(function sort() { 
@@ -112,7 +111,7 @@ function answerArray() {
 function renderAnswers() {
 	// creates a p tag to display the answers on the page vertically and assigns hover class 
 	for (var i = 0; i < answers.length; i++) {
-		$("<p>" + answers[i] + "</p>" + "<hr>").addClass("hoverThing").attr("data-value", answers[i]).appendTo("#answers");
+		$("<p>" + answers[i] + "</p>" + "<hr>").addClass("hoverThing answersP").attr("data-value", answers[i]).appendTo("#answers");
 	}
 }
 
@@ -124,16 +123,13 @@ function qClock() {
 	function decrement() {
       	if (timeClock > 0) {
 			timeClock--;
-			console.log(timeClock)
 			$("#timer").text("Seconds left: " + timeClock);
 		} 
-
 		else {
+	        isCorrect = false;
 	        removeQ();
 	        answers = [];
 	        stop();
-	        console.log("Line 26 Time Up!", timeClock);
-			console.log(answers);
 			timesUp();
 			currentQ++;
       	}
@@ -146,30 +142,17 @@ function stop() {
   	timeClock = 15;
 }
 
-// registers click and compares to right answers, increases correct/wrong answers, 
-// clears the answers array
+// registers click and compares to right answers
 $(document).on("click", ".hoverThing", function() {
 	var userAnswer = this
-	console.log(this);
 
 	if (($(this).attr("data-value")) === qs.hereMyQuestions[currentQ].yesAnswer) {
-		console.log("winner!");
-		correctAnswers++;
-		answers = [];
-		stop();
-		removeQ();
-		resultYes();
-		currentQ++;	
+		isCorrect = true;
+		resultYesNo();
 	}
-
 	else {
-		console.log("loser");
-		wrongAnswers++;
-		answers = [];
-		stop();
-		removeQ();
-		resultNo();
-		currentQ++; 
+		isCorrect = false;
+		resultYesNo();
 	}
 });
 
@@ -178,22 +161,31 @@ function removeQ() {
 	$("#question").empty();
 	$("#answers").empty();
 	$("#timer").removeClass("timerStyle").empty();
+	$("#img-result").empty();
 }
 
 // displays this text for 3 seconds if correct answer
-function resultYes() {
-	myTimer = setTimeout(yesDelete, 3000);
+function resultYesNo() {
+	answers = [];
+	stop();
+	removeQ();
 
-	$("#question").text("That's right!  It's " + qs.hereMyQuestions[currentQ].yesAnswer + ".");
-	$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").appendTo("#img-result");
-}
+	if (isCorrect) {
+		isCorrect = false; 
+		correctAnswers++; 
+		myTimer = setTimeout(yesDelete, 3000);
+		$("#question").text("That's right!  It's " + qs.hereMyQuestions[currentQ].yesAnswer + ".");
+		$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").addClass("img-responsive imgStyle").appendTo("#img-result");
+	}
 
-// displays this text for 3 seconds if wrong answer
-function resultNo() {
-	myTimer = setTimeout(yesDelete, 3000);
+	else {
+		myTimer = setTimeout(yesDelete, 3000);
+		wrongAnswers++;
+		$("#question").text("Nope!  It's " + qs.hereMyQuestions[currentQ].yesAnswer + ".");
+		$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").addClass("img-responsive imgStyle").appendTo("#img-result");
+	}
 
-	$("#question").text("Nope!  It's " + qs.hereMyQuestions[currentQ].yesAnswer + ".");
-	$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").appendTo("#img-result");
+	currentQ++; 
 }
 
 // displays this text for 3 seconds if time runs out
@@ -201,7 +193,7 @@ function timesUp() {
 	myTimer = setTimeout(yesDelete, 3000);
 
 	$("#question").text("Time's Up!  The correct answer is: " + qs.hereMyQuestions[currentQ].yesAnswer + ".");
-	$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").appendTo("#img-result");
+	$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").addClass("img-responsive imgStyle").appendTo("#img-result");
 }
 
 // deletes result information from the DOM
@@ -211,22 +203,17 @@ function yesDelete() {
 	clearTimeout(myTimer);
 	
 	if (currentQ < qs.hereMyQuestions.length) {
-		isAtTheEnd = false;
 		start();
 	}
-
 	else if (currentQ === qs.hereMyQuestions.length) {
-		isAtTheEnd = true;
 		atTheEnd();
 	}
 }
 
 function atTheEnd() {
-	if (isAtTheEnd === true) {
-		removeQ();
-		$("#img-result").empty();
-		lastPage();
-	}
+	removeQ();
+	$("#img-result").empty();
+	lastPage();
 }
 
 // displays the tally of correct and wrong answers on the final screen 
@@ -243,4 +230,5 @@ function lastPage() {
 	$("#answers").text("Wrong answers: " + wrongAnswers);
 	$("#img-result").text("Wanna play again?");
 	$("#ongo").removeClass("hidden");
+	currentQ = 0;
 }
