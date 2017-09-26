@@ -69,6 +69,7 @@ var correctAnswers = 0
 var wrongAnswers = 0
 var myTimer
 var currentQ = 0
+var isAtTheEnd = false;
 
 // start button activation
 $(document).ready(function startButton() {
@@ -82,13 +83,12 @@ $(document).ready(function startButton() {
 })
 
 function start() {
-		// writes the question to the page 
-		$("#timer").text("Seconds left: " + timeClock).addClass("timerStyle");
-	 	qClock();
-	 	$("#question").text(qs.hereMyQuestions[currentQ].question);
-		answerArray();
-		renderAnswers();
-		console.log("4, start function");
+	// writes the question to the page 
+	$("#timer").text("Seconds left: " + timeClock).addClass("timerStyle");
+ 	qClock();
+ 	$("#question").text(qs.hereMyQuestions[currentQ].question);
+	answerArray();
+	renderAnswers();
 }
 
 // creates array of answers
@@ -135,7 +135,7 @@ function qClock() {
 	        console.log("Line 26 Time Up!", timeClock);
 			console.log(answers);
 			timesUp();
-			atTheEndYet(); // currentQ++;
+			currentQ++;
       	}
     }
 }
@@ -159,7 +159,7 @@ $(document).on("click", ".hoverThing", function() {
 		stop();
 		removeQ();
 		resultYes();
-		atTheEndYet(); // currentQ++;	
+		currentQ++;	
 	}
 
 	else {
@@ -169,7 +169,7 @@ $(document).on("click", ".hoverThing", function() {
 		stop();
 		removeQ();
 		resultNo();
-		atTheEndYet(); // currentQ++; 
+		currentQ++; 
 	}
 });
 
@@ -202,7 +202,6 @@ function timesUp() {
 
 	$("#question").text("Time's Up!  The correct answer is: " + qs.hereMyQuestions[currentQ].yesAnswer + ".");
 	$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").appendTo("#img-result");
-	console.log("3, time's up function");
 }
 
 // deletes result information from the DOM
@@ -210,22 +209,38 @@ function yesDelete() {
 	$("#question").empty();
 	$("#img-result").empty();
 	clearTimeout(myTimer);
-	start();
+	
+	if (currentQ < qs.hereMyQuestions.length) {
+		isAtTheEnd = false;
+		start();
+	}
+
+	else if (currentQ === qs.hereMyQuestions.length) {
+		isAtTheEnd = true;
+		atTheEnd();
+	}
 }
 
-function atTheEndYet() {
-	if (currentQ <= 10) {
-		currentQ++;
-	}
-	else {
-		// write more code here...but not tonight. may need to nest some other functions here
-		// and then just call this up in the doc above rather than doing elsewise here
+function atTheEnd() {
+	if (isAtTheEnd === true) {
+		removeQ();
+		$("#img-result").empty();
 		lastPage();
 	}
 }
 
 // displays the tally of correct and wrong answers on the final screen 
 function lastPage() {
-	$("#questions").text("Correct answers: " + correctAnswers);
+	if (correctAnswers > wrongAnswers) {
+		$("#timer").text("Seems like you know a little something about aliens, friend!");
+	}
+
+	else if (correctAnswers < wrongAnswers || correctAnswers === wrongAnswers) {
+		$("#timer").text("You should study up on your aliens more! They're super cool!");
+	}
+	
+	$("#question").text("Correct answers: " + correctAnswers);
 	$("#answers").text("Wrong answers: " + wrongAnswers);
+	$("#img-result").text("Wanna play again?");
+	$("#ongo").removeClass("hidden");
 }
