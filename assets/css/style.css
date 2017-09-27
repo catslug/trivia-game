@@ -122,6 +122,10 @@ p#copyright {
 	margin-right: 10%;
 }
 
+#img-result {
+	padding: 20px;
+}
+
 footer#foot::before {
 	content: "";
 	content: none;

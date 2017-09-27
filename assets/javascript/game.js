@@ -64,6 +64,11 @@ var qs = {
   	yesAnswer: "Time Lords",
   	noAnswer: ["Romulans", "Wookies", "Vulcans"],
   	imgAnswer: "http://readeroffictions.com/wp-content/uploads/2015/07/gif-old-doctor-who.gif",
+  }, {
+  	question: "Mogo is a genderless member of the Green Lantern Corps. and is remarkable because they are:",
+  	yesAnswer: "a living planet.",
+  	noAnswer: ["an immortal demi-god.", "a traitorous spy.", "from another dimension."],
+  	imgAnswer: "http://24.media.tumblr.com/tumblr_lmnc6YrT1qa69wso1_500.gif",
   }]
 }
 var timeClock = 20
@@ -231,4 +236,6 @@ function lastPage() {
 	$("#img-result").text("Wanna play again?");
 	$("#ongo").removeClass("hidden");
 	currentQ = 0;
+	correctAnswers = 0;
+	wrongAnswers = 0; 
 }
