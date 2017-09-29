@@ -233,22 +233,22 @@ function lastPage() {
 
 	else if (correctAnswers > 7 && correctAnswers < 11) {
 		purpleProse.appendTo("#timer");
-		$("<p>").text("Probably a sketchy smuggler and/or trader in alien artifacts.");
+		$("<p>").text("Probably a sketchy smuggler and/or trader in alien artifacts.").appendTo("#timer");
 	}
 
 	else if (correctAnswers > 5 && correctAnswers < 8) {
 		purpleProse.appendTo("#timer");
-		$("<p>").text("Captain of the Starship Winterprise (Starship Enterprise knock off brand).");
+		$("<p>").text("Captain of the Starship Winterprise (Starship Enterprise knock off brand).").appendTo("#timer");
 	}
 
 	else if (correctAnswers > 3 && correctAnswers < 6) {
 		purpleProse.appendTo("#timer");
-		$("<p>").text("Accidentally discovered an authentic alien history book in your grandfather's attic, sold it for the price of a sandwich when you were in college.");
+		$("<p>").text("Accidentally discovered an authentic alien history book in your grandfather's attic, sold it for the price of a sandwich when you were in college.").appendTo("#timer");
 	}
 
 	else if (correctAnswers < 3) {
 		purpleProse.appendTo("#timer");
-		$("<p>").text("Sentient celery stalk.");
+		$("<p>").text("Sentient celery stalk.").appendTo("#timer");
 	}
 
 	$("<p>").text("Correct answers: " + correctAnswers).addClass("lastPageStyle").appendTo("#answers");
