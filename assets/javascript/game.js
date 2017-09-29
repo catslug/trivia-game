@@ -60,13 +60,18 @@ var qs = {
   	noAnswer: ["Starship Enterprise", "Millenium Falcon", "Milano"],
     imgAnswer: "https://media.tenor.com/images/302e7639700f41679ee8745333d6ca8d/tenor.gif",
   }, {
+  	question: "What does Martian Manhunter fear most?",
+  	yesAnswer: "Fire",
+  	noAnswer: ["Dust Bunnies", "Heights", "Purple Vegetables"],
+  	imgAnswer: "https://static.comicvine.com/uploads/original/11117/111173561/5367292-4508316669-53360.gif",
+  },{
   	question: "Which alien race has the longest average life span?",
   	yesAnswer: "Time Lords",
   	noAnswer: ["Romulans", "Wookies", "Vulcans"],
   	imgAnswer: "http://readeroffictions.com/wp-content/uploads/2015/07/gif-old-doctor-who.gif",
   }, {
   	question: "Mogo is a genderless member of the Green Lantern Corps. and is remarkable because they are:",
-  	yesAnswer: "a living planet.",
+  	yesAnswer: "a living planet",
   	noAnswer: ["an immortal demi-god", "a traitorous spy", "from another dimension"],
   	imgAnswer: "http://24.media.tumblr.com/tumblr_lmnc6bYrT61qa69wso1_500.gif",
   }]
@@ -219,17 +224,36 @@ function atTheEnd() {
 
 // displays the tally of correct and wrong answers on the final screen, un-hides the button for restart
 function lastPage() {
-	if (correctAnswers > wrongAnswers) {
-		$("#timer").text("Seems like you know a little something about aliens, friend! Have you been traveling with a Time Lord?");
+	var purpleProse = $("<p>").text("Based on your answers, we judge your level of expertise to be: ");
+
+	if (correctAnswers > 10) {
+		purpleProse.appendTo("#timer");
+		$("<p>").text("Intergalactic nerd living in the basement of your mom's spaceship.").appendTo("#timer");
 	}
 
-	else if (correctAnswers < wrongAnswers || correctAnswers === wrongAnswers) {
-		$("#timer").text("You should study up on your aliens more! You might one day find yourself falling through a Stargate.");
+	else if (correctAnswers > 7 && correctAnswers < 11) {
+		purpleProse.appendTo("#timer");
+		$("<p>").text("Probably a sketchy smuggler and/or trader in alien artifacts.");
 	}
-	
-	$("#question").text("Correct answers: " + correctAnswers).addClass("lastPageStyle");
-	$("#answers").text("Wrong answers: " + wrongAnswers).addClass("lastPageStyle");
-	$("#img-result").text("Wanna play again?").addClass("lastPageStyle");
+
+	else if (correctAnswers > 5 && correctAnswers < 8) {
+		purpleProse.appendTo("#timer");
+		$("<p>").text("Captain of the Starship Winterprise (Starship Enterprise knock off brand).");
+	}
+
+	else if (correctAnswers > 3 && correctAnswers < 6) {
+		purpleProse.appendTo("#timer");
+		$("<p>").text("Accidentally discovered an authentic alien history book in your grandfather's attic, sold it for the price of a sandwich when you were in college.");
+	}
+
+	else if (correctAnswers < 3) {
+		purpleProse.appendTo("#timer");
+		$("<p>").text("Sentient celery stalk.");
+	}
+
+	$("<p>").text("Correct answers: " + correctAnswers).addClass("lastPageStyle").appendTo("#answers");
+	$("<p>").text("Wrong answers: " + wrongAnswers).addClass("lastPageStyle").appendTo("#answers");
+	$("<p>").text("Wanna play again?").addClass("lastPageStyle").appendTo("#answers");
 	$("#ongo").text("begin (another) journey").removeClass("hidden");
 	currentQ = 0;
 	correctAnswers = 0;

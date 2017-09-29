@@ -36,7 +36,7 @@ p#under {
 
 #ongo {
 	background-color: #1bcc92;
-	margin: 25% 20% 25% 20%;
+	margin: 18% 20% 25% 20%;
 	font-size: 22px;
 	padding: 10px;
 	letter-spacing: 1px;
@@ -118,8 +118,9 @@ p#copyright {
 }
 
 p.lastPageStyle, img.lastPageStyle {
-	font-size: 25px;
+	font-size: 45px;
 	padding-top: 30px;
+	margin-top: 30px;
 }
 
 .imgStyle {
@@ -130,6 +131,7 @@ p.lastPageStyle, img.lastPageStyle {
 
 #img-result {
 	padding: 20px;
+	font-size: 45px;
 }
 
 footer#foot::before {
