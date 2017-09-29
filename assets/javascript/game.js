@@ -23,7 +23,7 @@ var qs = {
   	question: "The universe’s twisted pest control, this vicious species wears a tough mechanical exterior over their delicate inner bodies and approach all enemies while chanting “exterminate”.",
   	yesAnswer: "Daleks",
   	noAnswer: ["Sontaran", "Slitheen", "Time Lords"],
-  	imgAnswer: "https://media2.giphy.com/media/MAZ7tPKwCnrsA/giphy.gif",
+  	imgAnswer: "https://media.giphy.com/media/Ho6UqzAKxYX8Q/giphy.gif",
   }, {
   	question: "Most notably represented by a much beloved character who is known for wishing fellow travelers to “live long and prosper”, this hyper-logical alien race is known as:",
   	yesAnswer: "Vulcans",
@@ -35,7 +35,7 @@ var qs = {
   	noAnswer: ["Jabberwocky", "Bubble Tea Fet", "Habba the Jutt"],
     imgAnswer: "https://media2.giphy.com/media/e9naBh3ziasN2/giphy.gif",
   }, {
-  	question: "This alien race calls its origin planet “Homeworld” and has a unique ability to fuse and un-fuse with other members of its race, thus creating entirely new and more powerful entities. Some members of this race were born in areas that are known as “Kindergartens”. ",
+  	question: "This alien race calls its origin planet “Homeworld” and has a unique ability to fuse and un-fuse with other members of its race. Some members of this race were born in areas that are known as “Kindergartens”. ",
   	yesAnswer: "Crystal Gems",
   	noAnswer: ["Corruptions", "Cyborgs", "Geodeans"],
     imgAnswer: "https://vignette3.wikia.nocookie.net/steven-universe/images/7/73/Log_Date_Animation_Steven_hug_from_behind_Peridot.gif/revision/latest?cb=20160114045348",
@@ -60,18 +60,18 @@ var qs = {
   	noAnswer: ["Starship Enterprise", "Millenium Falcon", "Milano"],
     imgAnswer: "https://media.tenor.com/images/302e7639700f41679ee8745333d6ca8d/tenor.gif",
   }, {
-  	question: "Which alien race has the strongest average life span?",
+  	question: "Which alien race has the longest average life span?",
   	yesAnswer: "Time Lords",
   	noAnswer: ["Romulans", "Wookies", "Vulcans"],
   	imgAnswer: "http://readeroffictions.com/wp-content/uploads/2015/07/gif-old-doctor-who.gif",
   }, {
   	question: "Mogo is a genderless member of the Green Lantern Corps. and is remarkable because they are:",
   	yesAnswer: "a living planet.",
-  	noAnswer: ["an immortal demi-god.", "a traitorous spy.", "from another dimension."],
-  	imgAnswer: "http://24.media.tumblr.com/tumblr_lmnc6YrT1qa69wso1_500.gif",
+  	noAnswer: ["an immortal demi-god", "a traitorous spy", "from another dimension"],
+  	imgAnswer: "http://24.media.tumblr.com/tumblr_lmnc6bYrT61qa69wso1_500.gif",
   }]
 }
-var timeClock = 20
+var timeClock = 30
 var answers = []
 var correctAnswers = 0
 var wrongAnswers = 0
@@ -105,7 +105,6 @@ function answerArray() {
  	for (var i = 0; i < 3; i++) {
  		answers.push(qs.hereMyQuestions[currentQ].noAnswer[i]);
  	}
- 	
  	// sorts the new array of answers
  	answers.sort(function sort() { 
 		return (Math.round(Math.random()) - 0.5);
@@ -122,8 +121,8 @@ function renderAnswers() {
 
 // 30 second timer 
 function qClock() {
-	timeClock = 15;
-	myTimer = setInterval(decrement, 1000)
+	timeClock = 30;
+	myTimer = setInterval(decrement, 1000);
 
 	function decrement() {
       	if (timeClock > 0) {
@@ -144,13 +143,12 @@ function qClock() {
 // stops and clears the timer, resets value
 function stop() {
   	clearInterval(myTimer);
-  	timeClock = 15;
+  	timeClock = 30;
 }
 
 // registers click and compares to right answers
 $(document).on("click", ".hoverThing", function() {
-	var userAnswer = this
-
+	var userAnswer = this;
 	if (($(this).attr("data-value")) === qs.hereMyQuestions[currentQ].yesAnswer) {
 		isCorrect = true;
 		resultYesNo();
@@ -174,7 +172,6 @@ function resultYesNo() {
 	answers = [];
 	stop();
 	removeQ();
-
 	if (isCorrect) {
 		isCorrect = false; 
 		correctAnswers++; 
@@ -182,14 +179,12 @@ function resultYesNo() {
 		$("#question").text("That's right!  It's " + qs.hereMyQuestions[currentQ].yesAnswer + ".");
 		$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").addClass("img-responsive imgStyle").appendTo("#img-result");
 	}
-
 	else {
 		myTimer = setTimeout(yesDelete, 3000);
 		wrongAnswers++;
 		$("#question").text("Nope!  It's " + qs.hereMyQuestions[currentQ].yesAnswer + ".");
 		$("<img src='" + qs.hereMyQuestions[currentQ].imgAnswer + "' />").addClass("img-responsive imgStyle").appendTo("#img-result");
 	}
-
 	currentQ++; 
 }
 
@@ -215,26 +210,27 @@ function yesDelete() {
 	}
 }
 
+// empties the page, calls the last page function
 function atTheEnd() {
 	removeQ();
 	$("#img-result").empty();
 	lastPage();
 }
 
-// displays the tally of correct and wrong answers on the final screen 
+// displays the tally of correct and wrong answers on the final screen, un-hides the button for restart
 function lastPage() {
 	if (correctAnswers > wrongAnswers) {
-		$("#timer").text("Seems like you know a little something about aliens, friend!");
+		$("#timer").text("Seems like you know a little something about aliens, friend! Have you been traveling with a Time Lord?");
 	}
 
 	else if (correctAnswers < wrongAnswers || correctAnswers === wrongAnswers) {
-		$("#timer").text("You should study up on your aliens more! They're super cool!");
+		$("#timer").text("You should study up on your aliens more! You might one day find yourself falling through a Stargate.");
 	}
 	
-	$("#question").text("Correct answers: " + correctAnswers);
-	$("#answers").text("Wrong answers: " + wrongAnswers);
-	$("#img-result").text("Wanna play again?");
-	$("#ongo").removeClass("hidden");
+	$("#question").text("Correct answers: " + correctAnswers).addClass("lastPageStyle");
+	$("#answers").text("Wrong answers: " + wrongAnswers).addClass("lastPageStyle");
+	$("#img-result").text("Wanna play again?").addClass("lastPageStyle");
+	$("#ongo").text("begin (another) journey").removeClass("hidden");
 	currentQ = 0;
 	correctAnswers = 0;
 	wrongAnswers = 0; 

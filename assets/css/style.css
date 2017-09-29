@@ -18,7 +18,8 @@ header {
 	background-color: #c100e2;
 	color: #fff;
 	text-align: center;
-	height: 100px;
+	height: 120px;
+	white-space: nowrap;
 }
 
 p#head {
@@ -89,7 +90,7 @@ p#under {
 	color: transparent;
 }
 
-.hoverThing:hover {
+p.hoverThing:hover {
 	background-color: #0EB27D;
 	padding: 10px;
 }
@@ -114,6 +115,11 @@ p.timerStyle {
 
 p#copyright {
 	margin-bottom: 0;
+}
+
+p.lastPageStyle, img.lastPageStyle {
+	font-size: 25px;
+	padding-top: 30px;
 }
 
 .imgStyle {
@@ -142,4 +148,5 @@ footer#foot {
 	font-size: 16px;
 	padding: 18px;
 	letter-spacing: 2px;
+	white-space: nowrap;
 }
